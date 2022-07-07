@@ -36,6 +36,10 @@ body{
   padding: 0;
 }
 
+.hour{
+  cursor: default;
+}
+
 .description{
   white-space: pre-wrap;
 }
@@ -51,13 +55,14 @@ body{
 }
 .save-btn i{
   font-size: 25px;
-  transition: all .3s ease-in-out;
+  transition: font-size .2s ease-in-out;
 }
 .save-btn i.fa-floppy-disk:hover{
   font-size: 30px;
 }
 .save-btn i.fa-check{
   font-size: 30px;
+  color: rgb(0, 255, 0);
 }
 .save-btn:focus{
   outline: none;
