@@ -4,9 +4,12 @@ body{
   line-height: 1;
 }
 
+.subtitle{
+  font-style: italic;
+}
+
 #currentDay{
   font-size: 1.35rem;
-  font-style: italic;
 }
 
 textarea{
