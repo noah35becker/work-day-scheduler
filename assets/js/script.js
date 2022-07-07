@@ -44,6 +44,50 @@ function colorCoding(){
 }
 
 
+// Edit event descriptions
+$('.container').on('click', '.description-wrapper', function(){    
+    var editableEl = $('<textarea>')
+        .addClass(
+            $(this).attr('class')
+            .replace('description-wrapper', 'description-editor'))
+        .addClass('form-control rounded-0')
+        .text($(this).text().trim());
+    
+    $(this).replaceWith(editableEl);
+
+    editableEl.trigger('focus');
+});
+
+$('.container').on('click', '.save-btn', function(){
+    var thisSaveBtnIcon = $(this).children();
+    var editedEl = $(this).closest('.row').children('.description-editor');
+
+    thisSaveBtnIcon.switchClass('fa-floppy-disk', 'fa-check');
+    setTimeout(
+        () => thisSaveBtnIcon.switchClass('fa-check', 'fa-floppy-disk'),
+        2000);
+
+    if (editedEl.length){ // Ensures that this will only run if event description is currently a textarea
+        var unEditableEl = $(
+            '<div class="description-wrapper col-10 pl-3 mr-n3 d-flex align-items-center justify-content-start">\
+                <div class="description my-auto"></div>\
+            </div>');
+        unEditableEl.children().text(editedEl.val().trim());
+
+        editedEl.replaceWith(unEditableEl);
+        
+        colorCoding();
+        saveEvents();
+    }
+
+    $(this).trigger('blur');
+});
+
+$('.container').on('blur', '.description-editor', function(){
+    $(this).siblings('.save-btn').trigger('click');
+});
+
+
 // Save events to localStorage
 function saveEvents(){
     events = [];
@@ -64,4 +108,4 @@ function saveEvents(){
 setToday();
 populateDescriptions();
 colorCoding();
-// Add timers for refreshing current hour / current day
+// Add timers for refreshing current hour / current day (include N milliseconds as a RENDER_BUFFER)

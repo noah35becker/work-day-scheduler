@@ -1,40 +1,9 @@
 body{
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
-  line-height: 1;
+  line-height: 1.2;
 }
 
-.subtitle{
-  font-style: italic;
-}
-
-#currentDay{
-  font-size: 1.35rem;
-}
-
-textarea{
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
-}
-
-.description{
-  white-space: pre-wrap;
-}
-
-.row{
-  white-space: pre-wrap;
-  height: 80px;
-}
-
-.hour-wrapper{
-  background-color: #ffffff;
-  text-align: right;
-  padding: 0;
-}
 
 .past{
   background-color: #d3d3d3;
@@ -48,6 +17,29 @@ textarea{
   background-color: #85f785;
 }
 
+.subtitle{
+  font-style: italic;
+}
+
+#currentDay{
+  font-size: 1.35rem;
+}
+
+
+.row{
+  white-space: pre-wrap;
+  height: 80px;
+}
+
+.hour-wrapper{
+  background-color: #ffffff;
+  padding: 0;
+}
+
+.description{
+  white-space: pre-wrap;
+}
+
 .save-btn{
   border-color: black;
   border-left: 1px solid;
@@ -59,11 +51,23 @@ textarea{
 }
 .save-btn i{
   font-size: 25px;
-  transition: font-size .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
-.save-btn i:hover{
+.save-btn i.fa-floppy-disk:hover{
   font-size: 30px;
 }
+.save-btn i.fa-check{
+  font-size: 30px;
+}
+.save-btn:focus{
+  outline: none;
+}
+
+
+.description-editor{
+  resize: none;
+}
+
 
 footer{
   font-size: 15px;
