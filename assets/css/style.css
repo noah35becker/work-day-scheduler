@@ -10,12 +10,13 @@ body{
 }
 
 .present{
-  background-color: #ffbd5a;
+  background-color: #85f785;
 }
 
 .future{
-  background-color: #85f785;
+  background-color: #ffbd5a;
 }
+
 
 .subtitle{
   font-style: italic;
@@ -67,7 +68,6 @@ body{
 .save-btn:focus{
   outline: none;
 }
-
 
 .description-editor{
   resize: none;

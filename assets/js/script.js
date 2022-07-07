@@ -144,4 +144,6 @@ function getHour12HrTime(twentyFourHr){
 setToday();
 populateContainer();
 colorCoding();
-// Add timers for refreshing current hour / current day (include N milliseconds as a RENDER_BUFFER)
+// Add timers for refreshing current hour / current day
+    // (include N milliseconds as a RENDER_BUFFER, in both the outer setTimeout and inner setInterval methods)
+    // use Luxon's toMillis() function
