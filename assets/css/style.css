@@ -4,8 +4,9 @@ body {
   line-height: 1;
 }
 
-.lead{
+#currentDay{
   font-size: 1.35rem;
+  font-style: italic;
 }
 
 textarea{
@@ -24,6 +25,7 @@ textarea{
 .time-of-day{
   text-align: center;
 }
+
 
 
 tr {
@@ -63,4 +65,8 @@ tr {
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+}
+
+footer{
+  font-size: 15px;
 }
