@@ -21,15 +21,14 @@ textarea{
   white-space: pre-wrap;
 }
 
-.time-block{
+.time-of-day{
   text-align: center;
-  border-radius: 15px;
 }
 
-.row {
+
+tr {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
 }
 
 .hour {
