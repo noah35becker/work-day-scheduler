@@ -1,4 +1,4 @@
-body {
+body{
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
@@ -22,47 +22,44 @@ textarea{
   white-space: pre-wrap;
 }
 
-.time-of-day{
-  text-align: right;
-  padding: 0;
-}
-
-.row {
+.row{
   white-space: pre-wrap;
   height: 80px;
 }
 
-.hour {
+.hour-wrapper{
   background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
+  text-align: right;
+  padding: 0;
 }
 
-.past {
+.past{
   background-color: #d3d3d3;
 }
 
-.present {
+.present{
   background-color: #ffbd5a;
 }
 
-.future {
+.future{
   background-color: #85f785;
 }
 
 
-.saveBtn {
+.save-btn{
   border-color: black;
   border-left: 1px solid;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
-  font-size: 25px;
   color: white;
   
 }
-.saveBtn i:hover {
+.save-btn i{
+  font-size: 25px;
   transition: font-size .3s ease-in-out;
+}
+.save-btn i:hover{
   font-size: 30px;
 }
 
