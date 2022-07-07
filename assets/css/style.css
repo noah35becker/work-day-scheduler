@@ -24,9 +24,8 @@ textarea{
 
 .time-of-day{
   text-align: center;
+  padding: 0;
 }
-
-
 
 .row {
   white-space: pre-wrap;
