@@ -28,7 +28,7 @@ textarea{
 
 
 
-tr {
+.row {
   white-space: pre-wrap;
   height: 80px;
 }
@@ -51,17 +51,20 @@ tr {
   background-color: #85f785;
 }
 
+
 .saveBtn {
-  border-left: 1px solid black;
+  border-color: black;
+  border-left: 1px solid;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
+  font-size: 25px;
   color: white;
+  
 }
-
 .saveBtn i:hover {
-  font-size: 20px;
-  transition: all .3s ease-in-out;
+  transition: font-size .3s ease-in-out;
+  font-size: 30px;
 }
 
 footer{
