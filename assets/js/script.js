@@ -10,18 +10,18 @@ const ROW_HEIGHT = {
     size: 80,
     unit: 'px',
     string: function(){return this.size + this.unit;}
-}; // unit = px
+};
 
 const HOUR_RIGHT_PADDING_BOOTSTRAP = 1;
 const ROW_TEMPLATE =
-    "<div class='row'>\
-        <div class='hour-wrapper col-1 pr-" + HOUR_RIGHT_PADDING_BOOTSTRAP + " d-flex align-items-start pt-1 justify-content-end'>\
+    "<div class='row justify-content-center'>\
+        <div class='hour-wrapper col-2 col-lg-1 pr-" + HOUR_RIGHT_PADDING_BOOTSTRAP + " d-flex align-items-start pt-1 justify-content-end'>\
             <div class='hour font-weight-bolder'></div>\
         </div>\
-        <div class='description-wrapper col-10 pl-3 pr-n" + HOUR_RIGHT_PADDING_BOOTSTRAP + " d-flex align-items-center justify-content-start'>\
+        <div class='description-wrapper col-6 col-sm-8 col-md-9 col-lg-10 pl-2 pl-md-3 pr-n" + HOUR_RIGHT_PADDING_BOOTSTRAP + " d-flex align-items-center justify-content-start'>\
             <div class='description'></div>\
         </div>\
-        <button class='save-btn col-1'><i class='fa-solid fa-floppy-disk'></i></button>\
+        <button class='save-btn col-2 col-md-1'><i class='fa-solid fa-floppy-disk'></i></button>\
     </div>"
 
 const REFRESH_BUFFER = 1500; // 1.5 seconds
@@ -127,8 +127,9 @@ function colorCoding(){
 
         thisSaveBtnIcon.switchClass('fa-floppy-disk', 'fa-check', 0);
         setTimeout(
-            () => thisSaveBtnIcon.switchClass('fa-check', 'fa-floppy-disk', 0),
-            2000);
+            () => {
+                thisSaveBtnIcon.switchClass('fa-check', 'fa-floppy-disk', 0);
+            }, 2000);
 
         if (editedEl.length){ // Ensures that reverting description to non-editable text + saving to localStorage will only happen if necessary
             var nonEditableEl = $(ROW_TEMPLATE).children('.description-wrapper');
