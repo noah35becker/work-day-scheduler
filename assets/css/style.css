@@ -72,6 +72,9 @@ body{
 .description-editor{
   resize: none;
 }
+.description-editor:focus{
+  background-color: rgb(173, 255, 255);
+}
 
 
 footer{
