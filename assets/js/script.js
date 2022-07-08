@@ -85,7 +85,7 @@ function colorCoding(){
             
             $(this).css(
                 'background-position',
-                '0 ' + (index++ / numPastRows * 100) + '%'
+                '0 ' + (index++ / (numPastRows - 1) * 100) + '%'
             );
         });
 
@@ -97,7 +97,7 @@ function colorCoding(){
             
             $(this).css(
                 'background-position',
-                '0 ' + (index++ / numFutureRows * 100) + '%'
+                '0 ' + (index++ / (numFutureRows - 1) * 100) + '%'
             );
         });
     }
@@ -136,6 +136,7 @@ function colorCoding(){
             nonEditableEl.children().text(editedEl.val().trim());
 
             editedEl.replaceWith(nonEditableEl);
+            nonEditableEl.trigger('blur');
             
             saveEvents();
         }
@@ -143,7 +144,7 @@ function colorCoding(){
         colorCoding();
     });
 
-    // 
+    // When description editor is blurred, trigger a click on the corresponding .save-btn
     $('.container').on('blur', '.description-editor', function(){
         $(this).siblings('.save-btn').trigger('click');
     });
