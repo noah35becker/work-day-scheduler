@@ -6,8 +6,13 @@ var events = JSON.parse(localStorage.getItem('events')) || [];
 const EARLIEST_HR = '12AM';
 const LATEST_HR = '11PM';
 
-const HOUR_RIGHT_PADDING_BOOTSTRAP = 1;
+const ROW_HEIGHT = {
+    size: 80,
+    unit: 'px',
+    string: function(){return this.size + this.unit;}
+}; // unit = px
 
+const HOUR_RIGHT_PADDING_BOOTSTRAP = 1;
 const ROW_TEMPLATE =
     "<div class='row'>\
         <div class='hour-wrapper col-1 pr-" + HOUR_RIGHT_PADDING_BOOTSTRAP + " d-flex align-items-start pt-1 justify-content-end'>\
@@ -36,6 +41,7 @@ function populateContainer(){
     
     for (h = earliestHr24; h <= latestHr24; h++){
         var newRow = $(ROW_TEMPLATE);
+        newRow.css('height', ROW_HEIGHT.string());
         
         var thisHour = getHour12HrTime(h);
         newRow.find('.hour').text(thisHour);
@@ -64,6 +70,37 @@ function colorCoding(){
         else
             $(this).children('.description-wrapper').addClass('future');
     });
+
+    setGradientBackgrounds();
+
+    function setGradientBackgrounds(){
+        var numPastRows = $('.past').length;
+        var numFutureRows = $('.future').length;
+        var index = 0;
+        
+        $('.past').each(function(){
+            $(this).css(
+                'background-size',
+                1 + ROW_HEIGHT.unit + ' ' + (numPastRows * ROW_HEIGHT.size) + ROW_HEIGHT.unit);
+            
+            $(this).css(
+                'background-position',
+                '0 ' + (index++ / numPastRows * 100) + '%'
+            );
+        });
+
+        index = 0;
+        $('.future').each(function(){
+            $(this).css(
+                'background-size',
+                1 + ROW_HEIGHT.unit + ' ' + (numFutureRows * ROW_HEIGHT.size) + ROW_HEIGHT.unit);
+            
+            $(this).css(
+                'background-position',
+                '0 ' + (index++ / numFutureRows * 100) + '%'
+            );
+        });
+    }
 }
 
 
