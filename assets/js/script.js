@@ -3,8 +3,8 @@ const DateTime = luxon.DateTime;
 
 var events = JSON.parse(localStorage.getItem('events')) || [];
 
-const EARLIEST_HR = '6AM';
-const LATEST_HR = '6PM';
+const EARLIEST_HR = '12AM';
+const LATEST_HR = '11PM';
 
 const ROW_TEMPLATE =
     "<div class='row'>\
@@ -124,7 +124,10 @@ function saveEvents(){
 
 // Get hour in 24-hour time (returns a number)
 function getHour24HrTime(twelveHr){    
-    twelveHr = twelveHr === 'Noon' ? '12PM' : '' + twelveHr;
+    if (twelveHr === 'Noon')
+        twelveHr = '12PM';
+    else if (twelveHr === 'Midnight')
+        twelveHr = '12AM';
     
     return +DateTime.fromFormat(twelveHr, 'ha').toFormat('H');
 }
@@ -136,8 +139,13 @@ function getHour12HrTime(twentyFourHr){
     
     var twelveHr = DateTime.fromFormat(twentyFourHr, 'H').toFormat('ha');
     
-    return twelveHr === '12PM' ? 'Noon' : twelveHr;
+    if (twelveHr === '12PM')
+        return 'Noon';
+    if (twelveHr === '12AM')
+        return 'Midnight';
+    return twelveHr;
 }
+
 
 
 // INITIALIZE PAGE
