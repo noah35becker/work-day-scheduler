@@ -12,13 +12,12 @@ const ROW_HEIGHT = {
     string: function(){return this.size + this.unit;}
 };
 
-const HOUR_RIGHT_PADDING_BOOTSTRAP = 1;
 const ROW_TEMPLATE =
     "<div class='row justify-content-center'>\
-        <div class='hour-wrapper col-2 col-lg-1 pr-" + HOUR_RIGHT_PADDING_BOOTSTRAP + " d-flex align-items-start pt-1 justify-content-end'>\
+        <div class='hour-wrapper col-2 col-lg-1 pr-1 d-flex align-items-start pt-1 justify-content-end'>\
             <div class='hour font-weight-bolder'></div>\
         </div>\
-        <div class='description-wrapper col-6 col-sm-8 col-md-9 col-lg-10 pl-2 pl-md-3 pr-n" + HOUR_RIGHT_PADDING_BOOTSTRAP + " d-flex align-items-center justify-content-start'>\
+        <div class='description-wrapper col-6 col-sm-8 col-md-9 col-lg-10 pl-2 pl-md-3 d-flex align-items-center justify-content-start'>\
             <div class='description'></div>\
         </div>\
         <button class='save-btn col-2 col-md-1'><i class='fa-solid fa-floppy-disk'></i></button>\
@@ -46,10 +45,9 @@ function populateContainer(){
         var thisHour = getHour12HrTime(h);
         newRow.find('.hour').text(thisHour);
 
-        var desc = events.find(elem => elem.hour === thisHour);
-        if (desc){
-            desc = desc.description;
-            newRow.find('.description').text(desc);
+        var storedDatum = events.find(elem => elem.hour === thisHour);
+        if (storedDatum){
+            newRow.find('.description').text(storedDatum.description);
         }
 
         $('.container').append(newRow);
@@ -83,7 +81,7 @@ function colorCoding(){
         $('.past').each(function(){
             $(this).css(
                 'background-size',
-                1 + ROW_HEIGHT.unit + ' ' + (numPastRows * ROW_HEIGHT.size) + ROW_HEIGHT.unit);
+                '1px ' + (numPastRows * ROW_HEIGHT.size) + ROW_HEIGHT.unit);
             
             $(this).css(
                 'background-position',
@@ -95,7 +93,7 @@ function colorCoding(){
         $('.future').each(function(){
             $(this).css(
                 'background-size',
-                1 + ROW_HEIGHT.unit + ' ' + (numFutureRows * ROW_HEIGHT.size) + ROW_HEIGHT.unit);
+                '1px ' + (numFutureRows * ROW_HEIGHT.size) + ROW_HEIGHT.unit);
             
             $(this).css(
                 'background-position',
@@ -125,12 +123,12 @@ function colorCoding(){
     // When save button is clicked, display animation, revert description to non-editable text and save to localStorage
     $('.container').on('click', '.save-btn', function(){
         var thisSaveBtnIcon = $(this).children();
-        var editedEl = $(this).closest('.row').children('.description-editor');
+        var editedEl = $(this).siblings('.description-editor');
 
-        thisSaveBtnIcon.switchClass('fa-floppy-disk', 'fa-check', 0);
+        thisSaveBtnIcon.removeClass('fa-floppy-disk').addClass('fa-check');
         setTimeout(
             () => {
-                thisSaveBtnIcon.switchClass('fa-check', 'fa-floppy-disk', 0);
+                thisSaveBtnIcon.removeClass('fa-check').addClass('fa-floppy-disk');
             }, 2000);
 
         if (editedEl.length){ // Ensures that reverting description to non-editable text + saving to localStorage will only happen if necessary
@@ -141,9 +139,8 @@ function colorCoding(){
             nonEditableEl.trigger('blur');
             
             saveEvents();
+            colorCoding();
         }
-
-        colorCoding();
     });
 
     // When description editor is blurred, trigger a click on the corresponding .save-btn
@@ -218,7 +215,7 @@ colorCoding();
 // Refresh color coding at the top of every hour (delayed by REFRESH_BUFFER ms)
 setTimeout(() => {
     colorCoding();
-    setInterval(colorCoding, 1000 * 60 * 60)
+    setInterval(colorCoding, 1000 * 60 * 60);
 }, topOfNextHrUnix() - DateTime.now().toMillis() + REFRESH_BUFFER);
 
 // Refresh today's date at the top of every day (delayed by REFRESH_BUFFER ms)
