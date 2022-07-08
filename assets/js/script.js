@@ -3,8 +3,8 @@ const DateTime = luxon.DateTime;
 
 var events = JSON.parse(localStorage.getItem('events')) || [];
 
-const EARLIEST_HR = '12AM';
-const LATEST_HR = '11PM';
+const EARLIEST_HR = '7AM';
+const LATEST_HR = '6PM';
 
 const ROW_HEIGHT = {
     size: 80,
