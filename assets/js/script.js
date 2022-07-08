@@ -24,7 +24,7 @@ const ROW_TEMPLATE =
         <button class='save-btn col-2 col-md-1'><i class='fa-solid fa-floppy-disk'></i></button>\
     </div>"
 
-const REFRESH_BUFFER = 1500; // 1.5 seconds
+const REFRESH_BUFFER = 2000; // 2 seconds
 
 
 
@@ -62,6 +62,8 @@ function colorCoding(){
     $('.row').each(function(){
         var rowHour = getHour24HrTime($(this).find('.hour').text());
         var currentHour = +DateTime.now().toFormat('H');
+
+        $(this).children('.description-wrapper').removeClass('past present future');
         
         if (rowHour < currentHour)
             $(this).children('.description-wrapper').addClass('past');
@@ -178,9 +180,7 @@ function getHour24HrTime(twelveHr){
 
 // Get hour in 12-hour time (returns a string)
 function getHour12HrTime(twentyFourHr){
-    twentyFourHr = '' + twentyFourHr;
-    
-    var twelveHr = DateTime.fromFormat(twentyFourHr, 'H').toFormat('ha');
+    var twelveHr = DateTime.fromFormat('' + twentyFourHr, 'H').toFormat('ha');
     
     if (twelveHr === '12PM')
         return 'Noon';
@@ -218,7 +218,7 @@ colorCoding();
 // Refresh color coding at the top of every hour (delayed by REFRESH_BUFFER ms)
 setTimeout(() => {
     colorCoding();
-    setInterval(colorCoding, 1000 * 60 * 60 + REFRESH_BUFFER)
+    setInterval(colorCoding, 1000 * 60 * 60)
 }, topOfNextHrUnix() - DateTime.now().toMillis() + REFRESH_BUFFER);
 
 // Refresh today's date at the top of every day (delayed by REFRESH_BUFFER ms)

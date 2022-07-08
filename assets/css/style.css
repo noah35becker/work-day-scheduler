@@ -7,7 +7,7 @@ body{
 
 
 .past{
-  background-image: linear-gradient(180deg, #fff0f0, #ff5555);
+  background-image: linear-gradient(180deg, #fff0f0, #fe4848);
 }
 
 .present{
@@ -108,7 +108,7 @@ body{
   resize: none;
 }
 .description-editor:focus{
-  background-image: radial-gradient(rgb(191, 252, 255), rgb(48, 248, 255));
+  background-image: radial-gradient(ellipse at center, rgb(255, 255, 255), #00f7ff);
   background-size: 1px 100% !important;
 }
 
