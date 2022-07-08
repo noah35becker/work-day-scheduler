@@ -17,6 +17,8 @@ const ROW_TEMPLATE =
         <button class='save-btn col-1'><i class='fa-solid fa-floppy-disk'></i></button>\
     </div>"
 
+const REFRESH_BUFFER = 6000; // 6 seconds
+
 
 
 // Set text of current day
@@ -147,11 +149,39 @@ function getHour12HrTime(twentyFourHr){
 }
 
 
+// Get the Unix timestamp (in ms) of the top of the next hour from now
+function topOfNextHrUnix(){
+    return DateTime.fromFormat(
+        DateTime.now().plus({hours:1}).toFormat('d M y H'),
+        'd M y H')
+      .toMillis();
+}
+
+
+// Get the Unix timestamp (in ms) of the top of the next day from now
+function topOfNextDayUnix(){
+    return DateTime.fromFormat(
+        DateTime.now().plus({days:1}).toFormat('d M y'),
+        'd M y')
+      .toMillis();
+}
+
+
+
 
 // INITIALIZE PAGE
 setToday();
 populateContainer();
 colorCoding();
-// Add timers for refreshing current hour / current day
-    // (include N milliseconds as a RENDER_BUFFER, in both the outer setTimeout and inner setInterval methods)
-    // use Luxon's toMillis() function
+
+// Refresh color coding at the top of every hour (delayed by REFRESH_BUFFER ms)
+setTimeout(() => {
+    colorCoding();
+    setInterval(colorCoding, 1000 * 60 * 60 + REFRESH_BUFFER)
+}, topOfNextHrUnix() - DateTime.now().toMillis() + REFRESH_BUFFER);
+
+// Refresh today's date at the top of every day (delayed by REFRESH_BUFFER ms)
+setTimeout(() => {
+    setToday();
+    setInterval(setToday, 1000 * 60 * 60 * 24);
+}, topOfNextDayUnix() - DateTime.now().toMillis() + REFRESH_BUFFER);
