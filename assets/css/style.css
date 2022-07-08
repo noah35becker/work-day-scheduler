@@ -35,10 +35,16 @@ body{
 .hour-wrapper{
   background-color: #ffffff;
   padding: 0;
+  border: 1px solid black;
 }
 
 .hour{
   cursor: default;
+}
+
+.description-wrapper{
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .description{
@@ -46,14 +52,17 @@ body{
 }
 
 .save-btn{
-  border-color: black;
-  border-left: 1px solid;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border: none;
+  border: 1px solid black;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
   background-color: #06AED5;
   color: white;
-  
 }
+.save-btn:focus{
+  outline: none;
+}
+
 .save-btn i{
   font-size: 25px;
   transition: font-size .2s ease-in-out;
@@ -65,9 +74,26 @@ body{
   font-size: 30px;
   color: rgb(0, 255, 0);
 }
-.save-btn:focus{
-  outline: none;
+
+
+.row:first-child .hour-wrapper{
+  border-top-left-radius: 20%;
 }
+.row:last-child .hour-wrapper{
+  border-bottom-left-radius: 20%;
+}
+
+.row:not(:first-child) .save-btn,
+.row:not(:first-child) .hour-wrapper,
+.row:not(:first-child) .description-wrapper{
+  border-top-width: .5px;
+}
+.row:not(:last-child) .save-btn,
+.row:not(:last-child) .hour-wrapper,
+.row:not(:last-child) .description-wrapper{
+  border-bottom-width: .5px;
+}
+
 
 .description-editor{
   resize: none;

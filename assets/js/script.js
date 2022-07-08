@@ -6,18 +6,20 @@ var events = JSON.parse(localStorage.getItem('events')) || [];
 const EARLIEST_HR = '12AM';
 const LATEST_HR = '11PM';
 
+const HOUR_RIGHT_PADDING_BOOTSTRAP = 1;
+
 const ROW_TEMPLATE =
     "<div class='row'>\
-        <div class='hour-wrapper col-1 mr-3 d-flex align-items-center justify-content-end'>\
-            <div class='hour'></div>\
+        <div class='hour-wrapper col-1 pr-" + HOUR_RIGHT_PADDING_BOOTSTRAP + " d-flex align-items-start pt-1 justify-content-end'>\
+            <div class='hour font-weight-bolder'></div>\
         </div>\
-        <div class='description-wrapper col-10 pl-3 mr-n3 d-flex align-items-center justify-content-start'>\
+        <div class='description-wrapper col-10 pl-3 pr-n" + HOUR_RIGHT_PADDING_BOOTSTRAP + " d-flex align-items-center justify-content-start'>\
             <div class='description'></div>\
         </div>\
         <button class='save-btn col-1'><i class='fa-solid fa-floppy-disk'></i></button>\
     </div>"
 
-const REFRESH_BUFFER = 6000; // 6 seconds
+const REFRESH_BUFFER = 1500; // 1.5 seconds
 
 
 
