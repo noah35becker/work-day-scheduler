@@ -20,7 +20,7 @@ const ROW_TEMPLATE =
         <div class='description-wrapper col-6 col-sm-8 col-md-9 col-lg-10 pl-2 pl-md-3 d-flex align-items-center justify-content-start'>\
             <div class='description'></div>\
         </div>\
-        <button class='save-btn col-2 col-md-1'><i class='fa-solid fa-floppy-disk'></i></button>\
+        <button class='save-btn col-2 col-md-1'><i class='fa-solid fa-floppy-disk pr-1'></i></button>\
     </div>"
 
 const REFRESH_BUFFER = 2000; // 2 seconds
@@ -143,7 +143,7 @@ function colorCoding(){
         }
     });
 
-    // When description editor is blurred, trigger a click on the corresponding .save-btn
+    // When description editor is blurred, trigger a click on the corresponding save button
     $('.container').on('blur', '.description-editor', function(){
         $(this).siblings('.save-btn').trigger('click');
     });
