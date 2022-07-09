@@ -15,115 +15,61 @@ This code completes the weekly challenge for Module #5 in Columbia's Coding Boot
 
 <br/>
 
-I have created a daily planner. Users can log and save events on their schedule for different hours of the day.
+I have created a daily planner. A user can log and save events on their schedule for different hours of the day.
 
 - Today's date appears at the top of the page
     - This date auto-refreshes at midnight if the web application is left open
-- Hours appear for 
+    - Functionality is limited to the current date. Any events entered in the system will simply carry over to the next day.
+- Event blocks appear for hours between 7AM–6PM (extended workday hours)
+    - Event text descriptions can be entered or edited by clicking on any of the large boxes in the center column
+        - The box changes color while being edited, and reverts to its original color when edits are complete
+    - Clicking on a row's save button, or simply clicking away from an active editor, saves the given hour's event description as it currently appears
+        - The save button animates in either case
+        - Events are saved persistently in the browser's localStorage
+    - Each row is automatically color-coded based on the current hour:
+        - Past hours have a <span style='color: lightcoral'>red</span> gradient: darkest on the hour most recently passed, progressively lighter the further back in time
+        - The current hour is <span style='color: greenyellow'>green</span>
+        - Future hours have an <span style='color: orange'>orange</span> gradient: darkest on the next hour to come, progressively lighter the further forward in time
+        - Color-coding auto-refreshes at the top of each hour if the web application is left open
 
 
 
 <br/>
 
 All time functionality is handled via the <b>[Luxon](https://moment.github.io/luxon/#/)</b> API.
-
-
-     
-
-
 <br/>
 
-The web application uses a responsive layout that adapts to different viewports and devices.
+The web application uses a responsive layout that adapts to different viewports and devices, coded via Bootstrap and CSS media queries.
 
 <br/>
 ************************************************************************
+<br/>
 <br/>
 
 Below are screenshots of the web application in various states:
 
 <br/>
-The welcome screen
+The initial state (viewed at 9:06 AM)
 <br/>
 <br/>
-<img src="assets/final-screenshots/1-welcome-screen.png" width="600"/>
-<br/>
-
-<br/>
-The new user registration screen
-<br/>
-<br/>
-<img src="assets/final-screenshots/2-new-user-registration.png" width="600"/>
+<img src="assets/final-screenshots/initial-state.png" width="600"/>
 <br/>
 
 <br/>
-The new user registration screen with various user errors
+An event's text being edited
 <br/>
 <br/>
-<img src="assets/final-screenshots/3-new-user-registration-with-user-errors.png" width="600"/>
-<br/>
-
-<br/>
-The new user registration screen with a 'username already exists' message
-<br/>
-<br/>
-<img src="assets/final-screenshots/4-new-user-registration-username-already-exists.png" width="600"/>
+<img src="assets/final-screenshots/event-editor-open.png" width="600"/>
 <br/>
 
 <br/>
-The returning user login screen
+Right after editing an event's text (with save button animation)
 <br/>
 <br/>
-<img src="assets/final-screenshots/5-returning-user-login.png" width="600"/>
-<br/>
-
-<br/>
-The returning user login screen, with an invalid username/password combination
-<br/>
-<br/>
-<img src="assets/final-screenshots/6-returning-user-login-wrong-user-pass-combo.png" width="600"/>
+<img src="assets/final-screenshots/event-just-edited.png" width="600"/>
 <br/>
 
-<br/>
-The pre-quiz screen
-<br/>
-<br/>
-<img src="assets/final-screenshots/7-pre-quiz.png" width="600"/>
-<br/>
 
-<br/>
-A sample quiz question
-<br/>
-<br/>
-<img src="assets/final-screenshots/8-quiz-question.png" width="600"/>
-<br/>
-
-<br/>
-A quiz question with some wrong answers having been selected
-<br/>
-<br/>
-<img src="assets/final-screenshots/9-quiz-question-some-wrong-answers-selected.png" width="600"/>
-<br/>
-
-<br/>
-The end-of-quiz screen
-<br/>
-<br/>
-<img src="assets/final-screenshots/10-end-of-quiz.png" width="600"/>
-<br/>
-
-<br/>
-The global high scores screen, with fewer than 10 unique high scores in the system
-<br/>
-<br/>
-<img src="assets/final-screenshots/11-global-high-scores.png" width="600"/>
-<br/>
-
-<br/>
-The global high scores screen, with more than 10 unique high scores in the system
-<br/>
-<br/>
-<img src="assets/final-screenshots/12-global-high-scores-top-10.png" width="600"/>
-<br/>
 
 
 <br/>
